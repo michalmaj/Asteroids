@@ -3,6 +3,7 @@
 # throughout this file
 import pygame
 from constants import *
+from player import Player
 
 def main():
     # Create new window with given width and height
@@ -11,6 +12,9 @@ def main():
     # Create clock and delta time
     clock = pygame.time.Clock()
     dt = 0
+
+    # Create an object of Player and set it position to center of the screen
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
     # Main game loop
     while True:
@@ -22,6 +26,9 @@ def main():
         # Fill window with black color
         screen.fill((0, 0, 0), rect=None, special_flags=0)
         
+        # Draw player on the screen
+        player.draw(screen)
+
         # Constantly refresh window
         pygame.display.flip()
 
