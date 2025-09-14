@@ -13,6 +13,12 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
 
+    # Create a Player container for two groups
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+
+    Player.containers = (updatable, drawable)
+
     # Create an object of Player and set it position to center of the screen
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
@@ -27,10 +33,11 @@ def main():
         screen.fill((0, 0, 0), rect=None, special_flags=0)
         
         # Draw player on the screen
-        player.draw(screen)
+        for obj in drawable:
+            obj.draw(screen)
 
         # Update player position
-        player.update(dt)
+        updatable.update(dt)
 
         # Constantly refresh window
         pygame.display.flip()
