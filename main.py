@@ -29,6 +29,9 @@ def main():
         # Draw player on the screen
         player.draw(screen)
 
+        # Update player position
+        player.update(dt)
+
         # Constantly refresh window
         pygame.display.flip()
 
